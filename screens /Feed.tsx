@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 
 const FeedScreen = () => {
-  // Mock data for demonstration purposes
+//Mock Posts 
   const posts = [
     {
       id: '1',
