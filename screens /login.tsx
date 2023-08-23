@@ -10,11 +10,11 @@ const LoginScreen = ({ navigation }) => {
     if
          (email === 'user@example.com' &&  === 'user123')
     } {
-      // Successful login, navigate to the next screen (e.g., HomeScreen)
-      navigation.navigate('HomeScreen'); // Replace with the actual screen name
+      // Successful login, navigate to the Feed Screen 
+      navigation.navigate('FeedScreen'); 
     } else {
       setError('Invalid email or username');
-    }  navigation.navigate('MainStack'); // Replace 'MainStack' with your stack's screen name
+    }  navigation.navigate('AuthScreen'); 
   };
 
   return (
@@ -33,6 +33,17 @@ const LoginScreen = ({ navigation }) => {
         onChangeText={text => setPassword(text)}
         value={password}
       />
+      <View style={styles.checkboxContainer}>
+        <CheckBox
+          value={rememberMe}
+          onValueChange={() => setRememberMe(!rememberMe)}
+        />
+        <Text style={styles.checkboxLabel}>Remember Me</Text>
+      </View>
+      <Button title="Login" onPress={handleLogin} />
+    </View>
+  );
+};
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
