@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import axios from "axios"; // Import the Axios library
+import axios from "axios"; 
 
 const HomeScreen = () => {
   const [posts, setPosts] = useState([]);
@@ -21,7 +21,7 @@ const HomeScreen = () => {
         if (response.status === 200) {
           setPosts(response.data);
         } else {
-          console.error('Failed to fetch posts');
+          console.error('No posts');
         }
       } catch (error) {
         console.error('Error:', error);

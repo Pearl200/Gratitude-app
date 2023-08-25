@@ -8,6 +8,8 @@ import {
   ScrollView,
   StyleSheet,
 } from "react-native";
+import ImagePicker from 'react-native-image-picker';
+
 
 const CreatePostScreen = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -16,6 +18,8 @@ const CreatePostScreen = () => {
   const [impact, setImpact] = useState("");
   const [addMedia, setAddMedia] = useState(false);
   const [notifyCelebrant, setNotifyCelebrant] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
 
   const handleCreatePost = () => {
     // Perform logic to create the post with the entered information
@@ -26,15 +30,34 @@ const CreatePostScreen = () => {
     console.log("Impact:", impact);
     console.log("Add Media:", addMedia);
     console.log("Notify Celebrant:", notifyCelebrant);
+  
+    // Check if an image is selected
+    if (selectedImage) {
+      console.log("Selected Image URI:", selectedImage);
+      // Here, you can implement your logic to upload the selected image to your server
+    }
   };
+  
+  // ... rest of the component code
+  
+  // Add the ImagePicker logic within the return statement
+  <TouchableOpacity onPress={openImagePicker} style={styles.imagePickerButton}>
+    <Text>Select Image</Text>
+  </TouchableOpacity>
+  
+  {selectedImage && (
+    <Image source={{ uri: selectedImage }} style={styles.selectedImage} />
+  )}
+  
+  <Button title="Create Post" onPress={handleCreatePost} />
+  
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.categoryContainer}>
-        <Text>Select Category:</Text>
-        {/* Assuming you have a list of categories */}
-        {/* Replace 'Category' with the actual category names */}
-        <Button
+        <Text>Category</Text>
+      ``  
+       <Button
           title="Category"
           onPress={() => {
             // Open a modal or navigate to a category selection screen
