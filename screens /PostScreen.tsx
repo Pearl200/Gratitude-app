@@ -7,9 +7,9 @@ import {
   Switch,
   ScrollView,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
-import ImagePicker from 'react-native-image-picker';
+import ImagePicker, { ImagePickerResponse, MediaTypeOptions } from 'react-native-image-picker';
 
 
 const CreatePostScreen = () => {
@@ -22,10 +22,7 @@ const CreatePostScreen = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [addProject, setAddProject] = useState(false);
 
-
   const handleCreatePost = () => {
-    // Perform logic to create the post with the entered information
-    // For simplicity, we'll just log the data here
     console.log("Selected Category:", selectedCategory);
     console.log("Name:", name);
     console.log("Biography:", biography);
@@ -33,118 +30,96 @@ const CreatePostScreen = () => {
     console.log("Add Media:", addMedia);
     console.log("Add Project", addProject);
 
-
-   const MyComponent = ({ selectedImage }) => {
-  return (
-    <div>
-      {/* Use the selectedImage prop */}
-      <img src={selectedImage} alt="Selected" className="selected-image" />
-    </div>
-  );
-};
-
-  
-    // Check if an image is selected
     if (selectedImage) {
       console.log("Selected Image URI:", selectedImage);
-      // Here, you can implement your logic to upload the selected image to your server
     }
   };
-  
-  // ... rest of the component code
-  
-  // Add the ImagePicker logic within the return statement
-  <TouchableOpacity onPress={openImagePicker} style={styles.imagePickerButton}>
-    <Text>Select Image</Text>
-  </TouchableOpacity>
-  
-  {selectedImage && (
-    const MyComponent = ({ selectedImage }) => {
-      return (
-        <div>
-          {/* Use the selectedImage prop */}
-          <img src={selectedImage} alt="Selected" className="selected-image" />
-        </div>
-      );
-    };
-    
-  
-  <Button title="Create Post" onPress={handleCreatePost} />
-  
 
-  return (
+  //Image Picker Logic 
+  const openImagePicker = () => {
+  const options = {
+    mediaType: ,      // Specify the media type as 'photo'
+    includeBase64: false,   // Set to true if you want to include base64 data
+    maxHeight: 200,          // Maximum height of the selected image
+    maxWidth: 200,           // Maximum width of the selected image
+  };
+
+  ImagePicker.launchImageLibrary(options, (response: ImagePickerResponse) => {
+    if (!response.didCancel) {
+      if (response.error) {
+        console.error("ImagePicker Error:", response.error);
+      } else {
+        setSelectedImage(response.uri);  // Set the selected image URI
+      }
+    }
+  });
+};
+  }
+
+
+  return
     <ScrollView contentContainerStyle={styles.container}>
-      <View style={styles.categoryContainer}>
-        <Text>Category</Text>
-      ``  
-       <Button
-          title="Category"
-          onPress={() => {
-            // Open a modal or navigate to a category selection screen
-            // and set the selected category
-            setSelectedCategory("Category");
-          }}
-        />
-      </View>
-      <TextInput
-        style={styles.input}
-        placeholder="Name"
-        onChangeText={(text) => setName(text)}
-        value={name}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Celebrants Biography"
-        multiline
-        onChangeText={(text) => setBiography(text)}
-        value={biography}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Celebrants Impact"
-        multiline
-        onChangeText={(text) => setImpact(text)}
-        value={impact}
-      />
-      <View style={styles.optionContainer}>
-        <Text>Add Media:</Text>
-        <Switch
-          value={addMedia}
-          onValueChange={(value) => setAddMedia(value)}
-        />
-      </View>
-      <View style={styles.optionContainer}>
-        <Text>Notify Celebrant:</Text>
-        <Switch
-          value={notifyCelebrant}
-          onValueChange={(value) => setNotifyCelebrant(value)}
-        />
-      </View>
+      {/* ... */}
+      {/* Place the ImagePicker logic inside JSX tags */}
+      <TouchableOpacity onPress={openImagePicker} style={styles.imagePickerButton}>
+        <Text>Select Image</Text>
+    
+      </TouchableOpacity>
       <Button title="Create Post" onPress={handleCreatePost} />
+      {/* ... */}
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-  },
   categoryContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 20,
+    marginBottom: 10,
   },
   input: {
     borderWidth: 1,
     borderColor: "#ccc",
     padding: 10,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   optionContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 10,
+  },
+  imagePickerButton: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    padding: 10,
+    alignItems: "center",
+  },
+  container: {const styles = StyleSheet.create({
+    categoryContainer: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginBottom: 10,
+    },
+    input: {
+      borderWidth: 1,
+      borderColor: "#ccc",
+      padding: 10,
+      marginBottom: 10,
+    },
+    optionContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+    },
+    // Comment should be correctly formatted, not "/"
+    imagePickerButton: {
+      borderWidth: 1,
+      borderColor: "#ccc",
+      padding: 10,
+      alignItems: "center",
+    },
+  });
+    // Add your container styles here
   },
 });
 
