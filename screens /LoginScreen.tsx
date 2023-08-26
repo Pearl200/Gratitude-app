@@ -22,9 +22,7 @@ const LoginScreen = ({ navigation }) => {
     }
   };
 
-  function toggleRememberMe(event: GestureResponderEvent): void {
-    throw new Error("Function not implemented.");
-  }
+ 
 
   return(
 
@@ -93,13 +91,26 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   checkboxContainer: {
-    width: 10,
-    height: 10,
-    backgroundColour: "Light Grey",
-    borderRadius : 1,
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 10,
+  },
+  checkbox: {
+    width: 20,
+    height: 20,
+    borderWidth: 1,
+    borderColor: "#000",
+    marginRight: 5,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  checkboxInner: {
+    width: 12,
+    height: 12,
+    backgroundColor: "#000",
+  },
+  checked: {
+    backgroundColor: "#000",
   },
   errorText: {
     color: "red",
