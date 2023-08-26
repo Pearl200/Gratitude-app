@@ -22,32 +22,32 @@ const LoginScreen = ({ navigation }) => {
     }
   };
 
+  function toggleRememberMe(event: GestureResponderEvent): void {
+    throw new Error("Function not implemented.");
+  }
+
   return(
 
-    <View style={styles.container}>
+    <><View style={styles.container}>
       {/* Header with Logo */}
       <View style={styles.header}>
         <Image
-          source={require("./path/to/logo.png")} // Replace with actual logo path
-          style={styles.logo}
-        />
+          source={require(".assets/buzsquare.PNG")} 
+          style={styles.logo} />
       </View>
 
       {/* Image */}
       <Image
-        source={require("./path/to/image.png")} // Replace with actual image path
-        style={styles.image}
-      />
+        source={require("https://images.pexels.com/photos/3182824/pexels-photo-3182824.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")} // Replace with actual image path
+        style={styles.image} />
 
       <TextInput
         placeholder="Email or Username"
-        style={styles.input}
-      />
+        style={styles.input} />
       <TextInput
         placeholder="Password"
         secureTextEntry
-        style={styles.input}
-      />
+        style={styles.input} />
       <View style={styles.checkboxContainer}>
         <Text>Remember Me</Text>
         <TouchableOpacity
@@ -55,14 +55,10 @@ const LoginScreen = ({ navigation }) => {
           onPress={toggleRememberMe}>
 
 
-           <View style={[styles.checkboxInner, rememberMe && styles.checked]} />
+          <View style={[styles.checkboxInner, rememberMe && styles.checked]} />
         </TouchableOpacity>
       </View>
-      </View>
-
-      <Button title="Sign In" onPress={handleLogin} />
-
-      <Text style={styles.errorText}>{error}</Text>
+    </View><Button title="Sign In" onPress={handleLogin} /><Text style={styles.errorText}>{error}</Text></>
     
       </View>
   
@@ -97,6 +93,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   checkboxContainer: {
+    width: 10,
+    height: 10,
+    backgroundColour: "Light Grey",
+    borderRadius : 1,
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 10,
