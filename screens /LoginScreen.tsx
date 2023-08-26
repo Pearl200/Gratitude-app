@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Button, StyleSheet, Image } from "react-native";
+import { View, Text, TextInput, Button, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 const LoginScreen = ({ navigation }) => {
   const [error, setError] = useState("");
@@ -22,7 +22,8 @@ const LoginScreen = ({ navigation }) => {
     }
   };
 
-  return (
+  return(
+
     <View style={styles.container}>
       {/* Header with Logo */}
       <View style={styles.header}>
@@ -51,7 +52,7 @@ const LoginScreen = ({ navigation }) => {
         <Text>Remember Me</Text>
         <TouchableOpacity
           style={styles.checkbox}
-          onPress={toggleRememberMe}
+          onPress={toggleRememberMe}>
 
 
            <View style={[styles.checkboxInner, rememberMe && styles.checked]} />
@@ -62,9 +63,10 @@ const LoginScreen = ({ navigation }) => {
       <Button title="Sign In" onPress={handleLogin} />
 
       <Text style={styles.errorText}>{error}</Text>
-    </View>
-  );
-};
+    
+      </View>
+  
+)};
 
 const styles = StyleSheet.create({
   container: {
