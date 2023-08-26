@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-const LoginScreen = ({ navigation }) => {
+
+  const LoginScreen = ({ navigation }) => {
+  const [email, setEmail] = useState(""); // Check the state variable name here
+  const [password, setPassword] = useState(""); // Check the state variable name here
   const [error, setError] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
@@ -24,9 +27,14 @@ const LoginScreen = ({ navigation }) => {
 
  
 
+    function toggleRememberMe(event: GestureResponderEvent): void {
+      throw new Error("Function not implemented.");
+    }
+
   return(
 
-    <><View style={styles.container}>
+    <>
+    <View style={styles.container}>
       {/* Header with Logo */}
       <View style={styles.header}>
         <Image
@@ -46,6 +54,7 @@ const LoginScreen = ({ navigation }) => {
         placeholder="Password"
         secureTextEntry
         style={styles.input} />
+
       <View style={styles.checkboxContainer}>
         <Text>Remember Me</Text>
         <TouchableOpacity
@@ -58,7 +67,7 @@ const LoginScreen = ({ navigation }) => {
       </View>
     </View><Button title="Sign In" onPress={handleLogin} /><Text style={styles.errorText}>{error}</Text></>
     
-      </View>
+    </View>
   
 )};
 

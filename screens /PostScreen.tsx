@@ -7,6 +7,7 @@ import {
   Switch,
   ScrollView,
   StyleSheet,
+  TouchableOpacity
 } from "react-native";
 import ImagePicker from 'react-native-image-picker';
 
@@ -19,6 +20,7 @@ const CreatePostScreen = () => {
   const [addMedia, setAddMedia] = useState(false);
   const [notifyCelebrant, setNotifyCelebrant] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [addProject, setAddProject] = useState(false);
 
 
   const handleCreatePost = () => {
@@ -29,7 +31,18 @@ const CreatePostScreen = () => {
     console.log("Biography:", biography);
     console.log("Impact:", impact);
     console.log("Add Media:", addMedia);
-    console.log("Notify Celebrant:", notifyCelebrant);
+    console.log("Add Project", addProject);
+
+
+   const MyComponent = ({ selectedImage }) => {
+  return (
+    <div>
+      {/* Use the selectedImage prop */}
+      <img src={selectedImage} alt="Selected" className="selected-image" />
+    </div>
+  );
+};
+
   
     // Check if an image is selected
     if (selectedImage) {
@@ -46,8 +59,15 @@ const CreatePostScreen = () => {
   </TouchableOpacity>
   
   {selectedImage && (
-    <Image source={{ uri: selectedImage }} style={styles.selectedImage} />
-  )}
+    const MyComponent = ({ selectedImage }) => {
+      return (
+        <div>
+          {/* Use the selectedImage prop */}
+          <img src={selectedImage} alt="Selected" className="selected-image" />
+        </div>
+      );
+    };
+    
   
   <Button title="Create Post" onPress={handleCreatePost} />
   
