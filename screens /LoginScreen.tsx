@@ -6,6 +6,12 @@ const LoginScreen = ({ navigation }) => {
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleLogin = () => {
+     if (email === "user@example.com" && password === "password") {
+      // Navigate to the next screen upon successful login
+      navigation.navigate("HomeScreen");
+    } else {
+      setError("Invalid email or password");
+    }
     // Simulate login logic
     const isLoginSuccessful = true; 
 
